@@ -1,6 +1,6 @@
 # Hemyn common
 
-`Hemyn`公司基础通用工具。
+`Hemyn`基础通用工具。
 
 ## web-components
 
@@ -9,3 +9,10 @@
 ## h5-components
 
 `h5`通用组件。
+
+## development
+
+开发步骤
+1. `packages`下包打好，打包方法见具体包
+2. 提交代码到仓库
+3. `lerna publish`
