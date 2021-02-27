@@ -1,6 +1,6 @@
 {
   "name": "hm-web-components",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "web components based on antd",
   "main": "lib/index.js",
   "scripts": {
