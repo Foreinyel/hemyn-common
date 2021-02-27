@@ -18,6 +18,16 @@
 <div className="hm-query-container">
 ```
 
+本地开发时，可以使用`npm link`链接到`local node_modules`，然后在引用的项目中执行`npm link hm-web-components`：
+
+```console
+$ cd [hm-web-components path]
+$ npm link
+$ cd [project path]
+$ npm link hm-web-components
+```
+
+
 打包脚本：
 
 ```console
