@@ -1,6 +1,6 @@
 {
-  "name": "h5-components",
-  "version": "1.0.0",
+  "name": "hm-h5-components",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,5 +9,5 @@
   "keywords": [],
   "author": "shihao",
   "license": "ISC",
-  "gitHead": "62f27fcf1ee50bdad33e0ccacbd1890783a9d5ee"
+  "gitHead": "28245fff5a71061317bc05085366a0a26c84f662"
 }

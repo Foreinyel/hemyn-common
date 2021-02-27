@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project",
-  "version": "1.0.0",
-  "description": "My webpack project",
+  "name": "hm-web-components",
+  "version": "0.0.0",
+  "description": "web components based on antd",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,5 +25,5 @@
     "less": "^4.1.1",
     "typescript": "^4.2.2"
   },
-  "gitHead": "62f27fcf1ee50bdad33e0ccacbd1890783a9d5ee"
+  "gitHead": "28245fff5a71061317bc05085366a0a26c84f662"
 }
