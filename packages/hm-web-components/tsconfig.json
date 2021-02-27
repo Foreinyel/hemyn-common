@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "outDir": "lib",
+    "declaration": true,
     // "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "module": "commonjs",
+    "lib": ["es2017", "es7", "es6", "dom"],
     "target": "es5",
     "allowJs": true,
     "moduleResolution": "node",
@@ -19,5 +21,6 @@
     "src/index.ts"
   ],
   "include": ["./src/**/*"],
+  "exclude": ["node_modules", "lib"],
   "typeRoots": ["./node_modules/@types", "./src/typings"]
 }
