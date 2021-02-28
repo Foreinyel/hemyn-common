@@ -1,5 +1,5 @@
 {
-  "name": "@hm/utils",
+  "name": "hm-web-utils",
   "version": "1.2.0",
   "description": "",
   "main": "lib/index.js",
@@ -14,5 +14,5 @@
     "antd": "^4.12.3",
     "axios": "^0.21.1"
   },
-  "gitHead": "b155aa8b873d8e5b1b5eb258eced2fd1544f74f7"
+  "gitHead": "04b7964bed4e4b979c2fa11830df9f464ed5c7d9"
 }
