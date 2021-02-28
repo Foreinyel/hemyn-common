@@ -1,6 +1,0 @@
-42 error Error: Command failed: git tag v1.0.0 -m v1.0.0
-42 error fatal: tag 'v1.0.0' already exists
-42 error
-42 error     at makeError (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:174:9)
-42 error     at /usr/local/lib/node_modules/lerna/node_modules/execa/index.js:278:16
-42 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
