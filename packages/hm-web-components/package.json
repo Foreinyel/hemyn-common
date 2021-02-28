@@ -18,11 +18,13 @@
     "@ant-design/pro-table": "^2.7.2",
     "@antv/g2": "^4.0.15",
     "antd": "^4.12.3",
+    "classnames": "^2.2.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/history": "^4.7.8",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.1",
