@@ -14,7 +14,7 @@
     "antd": "^4.12.3",
     "axios": "^0.21.1"
   },
-  "gitHead": "101f2efdec82dfff001a8ad0f3f9ecee44ab64ef",
+  "gitHead": "fb8227495bc1dfd9eacadd90bd754ee27216af0d",
   "publishConfig": {
     "access": "public"
   }
