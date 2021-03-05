@@ -9,5 +9,8 @@
   "keywords": [],
   "author": "shihao",
   "license": "ISC",
-  "gitHead": "28245fff5a71061317bc05085366a0a26c84f662"
+  "gitHead": "28245fff5a71061317bc05085366a0a26c84f662",
+  "publishConfig": {
+    "access": "public"
+  }
 }
