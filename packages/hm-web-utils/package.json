@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "shihao",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "antd": "^4.12.3",
     "axios": "^0.21.1"

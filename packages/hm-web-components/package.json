@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "shihao",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
     "@ant-design/pro-descriptions": "^1.0.16",

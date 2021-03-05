@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "shihao",
-  "license": "ISC",
+  "license": "MIT",
   "gitHead": "fb8227495bc1dfd9eacadd90bd754ee27216af0d",
   "publishConfig": {
     "access": "public"
