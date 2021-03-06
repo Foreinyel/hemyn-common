@@ -11,8 +11,11 @@
   "author": "shihao",
   "license": "MIT",
   "dependencies": {
+    "@types/react": "^17.0.2",
     "antd": "^4.12.3",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "react": "^17.0.1",
+    "typescript": "^4.2.3"
   },
   "gitHead": "fb8227495bc1dfd9eacadd90bd754ee27216af0d",
   "publishConfig": {

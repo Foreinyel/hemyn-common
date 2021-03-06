@@ -56,15 +56,18 @@ instance.interceptors.response.use(function (res) {
         antd_1.message.error("请求失败，请稍后再试!");
     }
 });
-exports.rPost = function (path, data) { return instance.post(path, data); };
-exports.rGet = function (path) {
+var rPost = function (path, data) { return instance.post(path, data); };
+exports.rPost = rPost;
+var rGet = function (path) {
     return instance.get(path, {
         method: "get",
     });
 };
-exports.rPut = function (path, data) {
+exports.rGet = rGet;
+var rPut = function (path, data) {
     return instance.put(path, {
         method: "put",
         data: data,
     });
 };
+exports.rPut = rPut;
