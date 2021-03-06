@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "publish": "npm login && lerna publish"
+    "pub": "npm login && lerna publish"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
