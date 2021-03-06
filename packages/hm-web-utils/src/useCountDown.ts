@@ -15,7 +15,7 @@ const useCountDown = () => {
     countDownCallback.current = callback;
     countDown.current = origin;
     intervalValue.current = setInterval(() => {
-      countDown!.current -= 1;
+      countDown!.current! -= 1;
       setCount(countDown.current);
       if (countDown.current === 0) {
         stop();
@@ -26,8 +26,8 @@ const useCountDown = () => {
   const stop = () => {
     clearInterval(intervalValue.current);
     setCount(undefined);
-    countDown.current = undefined;
-    countDownCallback!.current();
+    countDown!.current = undefined;
+    countDownCallback!.current!();
   };
 
   return {
