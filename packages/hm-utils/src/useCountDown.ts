@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 const useCountDown = () => {
   const [count, setCount] = useState<number>();
   const countDown = useRef<number>();
-  const intervalValue = useRef<number>();
+  const intervalValue = useRef<NodeJS.Timeout>();
   const countDownCallback = useRef<Function>();
 
   const start = (
@@ -24,7 +24,7 @@ const useCountDown = () => {
   };
 
   const stop = () => {
-    clearInterval(intervalValue.current);
+    clearInterval(intervalValue.current!);
     setCount(undefined);
     countDown!.current = undefined;
     countDownCallback!.current!();
