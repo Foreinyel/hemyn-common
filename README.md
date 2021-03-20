@@ -21,6 +21,7 @@ $ tsc --init
 ## publish
 
 开发步骤
+
 1. `packages`下包打好，打包方法见具体包
 2. 提交代码到仓库
 3. `lerna publish`
