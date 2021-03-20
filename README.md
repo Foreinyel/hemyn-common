@@ -13,9 +13,9 @@
 ## development
 
 ```console
-$ mkdir [project_name]
-$ npm init -y
-$ tsc --init
+mkdir [project_name]
+npm init -y
+tsc --init
 ```
 
 ## publish
@@ -24,4 +24,5 @@ $ tsc --init
 
 1. `packages`下包打好，打包方法见具体包
 2. 提交代码到仓库
-3. `lerna publish`
+3. 登录npmjs: `npm login`
+4. `lerna publish`
