@@ -20,6 +20,8 @@ export const Form = (props: FormProps) => {
 
 Form.Item = AntdForm.Item;
 
+Form.useForm = AntdForm.useForm;
+
 // export const FormItem = AntdForm.Item;
 
 const tailLayout = {
