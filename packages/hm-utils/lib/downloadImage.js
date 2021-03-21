@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (function (imgsrc, name) {
+export default (function (imgsrc, name) {
     // 下载图片地址和图片名
     var image = new Image();
     // 解决跨域 Canvas 污染问题

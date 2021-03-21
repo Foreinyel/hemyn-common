@@ -1,11 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = require("react");
+import { useState, useRef } from "react";
 var useCountDown = function () {
-    var _a = react_1.useState(), count = _a[0], setCount = _a[1];
-    var countDown = react_1.useRef();
-    var intervalValue = react_1.useRef();
-    var countDownCallback = react_1.useRef();
+    var _a = useState(), count = _a[0], setCount = _a[1];
+    var countDown = useRef();
+    var intervalValue = useRef();
+    var countDownCallback = useRef();
     var start = function (origin, delay, callback) {
         setCount(origin);
         countDownCallback.current = callback;
@@ -30,4 +28,4 @@ var useCountDown = function () {
         stop: stop,
     };
 };
-exports.default = useCountDown;
+export default useCountDown;

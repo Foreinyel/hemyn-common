@@ -1,5 +1,5 @@
-import { message } from "antd";
-import axios, { AxiosResponse } from "axios";
+import message from "antd/es/message";
+import axios from "axios";
 
 export interface Response<T> {
   code: number;

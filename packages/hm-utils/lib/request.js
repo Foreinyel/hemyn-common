@@ -1,12 +1,6 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.rPut = exports.rGet = exports.rPost = void 0;
-var antd_1 = require("antd");
-var axios_1 = __importDefault(require("axios"));
-var instance = axios_1.default.create({
+import message from "antd/es/message";
+import axios from "axios";
+var instance = axios.create({
     timeout: 60000,
 });
 instance.interceptors.response.use(function (res) {
@@ -43,33 +37,30 @@ instance.interceptors.response.use(function (res) {
     }
     if (res.data && res.data.message) {
         // throw new Error(res.data.message);
-        antd_1.message.error(res.data.message);
+        message.error(res.data.message);
         throw new Error(res.data.message);
     }
-    antd_1.message.error("请求失败");
+    message.error("请求失败");
     throw new Error("请求失败");
 }, function (err) {
     if (err && err.message && err.message.indexOf("401") >= 0) {
-        antd_1.message.error("没有权限，请联系管理员!");
+        message.error("没有权限，请联系管理员!");
     }
     else {
-        antd_1.message.error("请求失败，请稍后再试!");
+        message.error("请求失败，请稍后再试!");
     }
 });
-var rPost = function (path, data) {
+export var rPost = function (path, data) {
     return instance.post(path, data);
 };
-exports.rPost = rPost;
-var rGet = function (path) {
+export var rGet = function (path) {
     return instance.get(path, {
         method: "get",
     });
 };
-exports.rGet = rGet;
-var rPut = function (path, data) {
+export var rPut = function (path, data) {
     return instance.put(path, {
         method: "put",
         data: data,
     });
 };
-exports.rPut = rPut;

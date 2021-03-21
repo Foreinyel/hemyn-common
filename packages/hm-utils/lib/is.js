@@ -1,22 +1,18 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.isPassword = exports.qs2Obj = exports.isMobile = void 0;
 /**
  * @description 是否是手机号
  * @param mobile 手机号
  * @returns boolean
  */
-var isMobile = function (mobile) {
+export var isMobile = function (mobile) {
     var reg = /^0?1[3|4|5|6|7|8][0-9]\d{8}$/;
     return reg.test(mobile);
 };
-exports.isMobile = isMobile;
 /**
  * @description 将queryString转换成key, value键值对
  * @param {String} qs
  * @returns object
  */
-var qs2Obj = function (qs) {
+export var qs2Obj = function (qs) {
     // console.log(qs)
     var arr = qs.split("&");
     var obj = {};
@@ -28,14 +24,12 @@ var qs2Obj = function (qs) {
     }
     return obj;
 };
-exports.qs2Obj = qs2Obj;
 /**
  * @description 是否是密码，限定密码为至少6位的任意字符
  * @param password
  * @returns boolean
  */
-var isPassword = function (password) {
+export var isPassword = function (password) {
     var reg = /^.{6,}$/;
     return reg.test(password);
 };
-exports.isPassword = isPassword;
