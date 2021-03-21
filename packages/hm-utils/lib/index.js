@@ -19,3 +19,4 @@ Object.defineProperty(exports, "downloadImage", { enumerable: true, get: functio
 __exportStar(require("./request"), exports);
 var useCountDown_1 = require("./useCountDown");
 Object.defineProperty(exports, "useCountDown", { enumerable: true, get: function () { return __importDefault(useCountDown_1).default; } });
+__exportStar(require("./is"), exports);
