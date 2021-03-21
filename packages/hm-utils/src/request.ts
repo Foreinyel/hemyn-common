@@ -1,5 +1,13 @@
 import message from "antd/es/message";
 import axios from "axios";
+import { getToken } from "./token";
+
+// const NormalHttpStatusCode =
+export enum NormalHttpStatusCode {
+  SUCCESS = 200,
+  SUCCESS_CREATED = 201,
+  SUCCESS_ACCEPTED = 202,
+}
 
 export interface Response<T> {
   code: number;
@@ -9,6 +17,16 @@ export interface Response<T> {
 
 const instance = axios.create({
   timeout: 60000,
+});
+
+instance.interceptors.request.use((config) => {
+  const token = getToken();
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
 });
 
 instance.interceptors.response.use(
@@ -42,11 +60,15 @@ instance.interceptors.response.use(
       }
       return Promise.resolve();
     }
-    if (res.status === 200 && res.data && res.data.code === 0) {
+
+    if (
+      `${res.status}` in NormalHttpStatusCode &&
+      res.data &&
+      res.data.code === 0
+    ) {
       return Promise.resolve(res.data.data);
     }
     if (res.data && res.data.message) {
-      // throw new Error(res.data.message);
       message.error(res.data.message);
       throw new Error(res.data.message);
     }
@@ -62,16 +84,16 @@ instance.interceptors.response.use(
   }
 );
 
-export const rPost = <T, U>(path: string, data: T) =>
-  instance.post<Response<U>>(path, data);
+export const rPost = async <T, U>(path: string, data: T) =>
+  await instance.post<U, U>(path, data);
 
-export const rGet = <U>(path: string) =>
-  instance.get<Response<U>>(path, {
+export const rGet = async <U>(path: string) =>
+  await instance.get<U, U>(path, {
     method: "get",
   });
 
-export const rPut = <T, U>(path: string, data: T) =>
-  instance.put<Response<U>>(path, {
+export const rPut = async <T, U>(path: string, data: T) =>
+  await instance.put<U, U>(path, {
     method: "put",
     data,
   });
