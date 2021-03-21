@@ -1,9 +1,18 @@
+/**
+ * @description 是否是手机号
+ * @param mobile 手机号
+ * @returns boolean
+ */
 export const isMobile = (mobile: string) => {
   const reg = /^0?1[3|4|5|6|7|8][0-9]\d{8}$/;
   return reg.test(mobile);
 };
 
-// queryString to Object
+/**
+ * @description 将queryString转换成key, value键值对
+ * @param {String} qs
+ * @returns object
+ */
 export const qs2Obj = (qs: string) => {
   // console.log(qs)
   const arr: string[] = qs.split("&");
@@ -14,4 +23,14 @@ export const qs2Obj = (qs: string) => {
     }
   }
   return obj;
+};
+
+/**
+ * @description 是否是密码，限定密码为至少6位的任意字符
+ * @param password
+ * @returns boolean
+ */
+export const isPassword = (password: string) => {
+  const reg = /^.{6,}$/;
+  return reg.test(password);
 };
