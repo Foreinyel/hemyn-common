@@ -56,7 +56,9 @@ instance.interceptors.response.use(function (res) {
         antd_1.message.error("请求失败，请稍后再试!");
     }
 });
-var rPost = function (path, data) { return instance.post(path, data); };
+var rPost = function (path, data) {
+    return instance.post(path, data);
+};
 exports.rPost = rPost;
 var rGet = function (path) {
     return instance.get(path, {

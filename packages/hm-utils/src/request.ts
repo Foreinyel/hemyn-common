@@ -1,5 +1,11 @@
 import { message } from "antd";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+
+export interface Response<T> {
+  code: number;
+  data: T;
+  message?: string;
+}
 
 const instance = axios.create({
   timeout: 60000,
@@ -56,15 +62,16 @@ instance.interceptors.response.use(
   }
 );
 
-export const rPost = (path: string, data: any) => instance.post(path, data);
+export const rPost = <T, U>(path: string, data: T) =>
+  instance.post<Response<U>>(path, data);
 
-export const rGet = (path: string) =>
-  instance.get(path, {
+export const rGet = <U>(path: string) =>
+  instance.get<Response<U>>(path, {
     method: "get",
   });
 
-export const rPut = (path: string, data: any) =>
-  instance.put(path, {
+export const rPut = <T, U>(path: string, data: T) =>
+  instance.put<Response<U>>(path, {
     method: "put",
     data,
   });

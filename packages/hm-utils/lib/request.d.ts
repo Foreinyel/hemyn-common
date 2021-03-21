@@ -1,3 +1,9 @@
-export declare const rPost: (path: string, data: any) => Promise<import("axios").AxiosResponse<any>>;
-export declare const rGet: (path: string) => Promise<import("axios").AxiosResponse<any>>;
-export declare const rPut: (path: string, data: any) => Promise<import("axios").AxiosResponse<any>>;
+import { AxiosResponse } from "axios";
+export interface Response<T> {
+    code: number;
+    data: T;
+    message?: string;
+}
+export declare const rPost: <T, U>(path: string, data: T) => Promise<AxiosResponse<Response<U>>>;
+export declare const rGet: <U>(path: string) => Promise<AxiosResponse<Response<U>>>;
+export declare const rPut: <T, U>(path: string, data: T) => Promise<AxiosResponse<Response<U>>>;
