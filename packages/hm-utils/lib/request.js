@@ -83,6 +83,7 @@ instance.interceptors.response.use(function (res) {
         }
         return Promise.resolve();
     }
+    console.log(res);
     if ("" + res.status in NormalHttpStatusCode &&
         res.data &&
         res.data.code === 0) {
@@ -109,11 +110,19 @@ export var rPost = function (path, data) { return __awaiter(void 0, void 0, void
     }
 }); }); };
 export var rGet = function (path) { return __awaiter(void 0, void 0, void 0, function () {
+    var _path;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, instance.get(path, {
-                    method: "get",
-                })];
+            case 0:
+                if (path.indexOf("?") >= 0) {
+                    _path = path + "&t=" + Date.now();
+                }
+                else {
+                    _path = path + "?t=" + Date.now();
+                }
+                return [4 /*yield*/, instance.get(_path, {
+                        method: "get",
+                    })];
             case 1: return [2 /*return*/, _a.sent()];
         }
     });

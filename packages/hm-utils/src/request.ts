@@ -61,6 +61,8 @@ instance.interceptors.response.use(
       return Promise.resolve();
     }
 
+    console.log(res);
+
     if (
       `${res.status}` in NormalHttpStatusCode &&
       res.data &&
@@ -87,10 +89,19 @@ instance.interceptors.response.use(
 export const rPost = async <T, U>(path: string, data: T) =>
   await instance.post<U, U>(path, data);
 
-export const rGet = async <U>(path: string) =>
-  await instance.get<U, U>(path, {
+export const rGet = async <U>(path: string) => {
+  let _path: string;
+
+  if (path.indexOf("?") >= 0) {
+    _path = `${path}&t=${Date.now()}`;
+  } else {
+    _path = `${path}?t=${Date.now()}`;
+  }
+
+  return await instance.get<U, U>(_path, {
     method: "get",
   });
+};
 
 export const rPut = async <T, U>(path: string, data: T) =>
   await instance.put<U, U>(path, {
