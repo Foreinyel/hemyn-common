@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Tooltip } from "antd";
+import Tooltip from "antd/es/tooltip";
 
 interface BigTextProps {
   text: string;

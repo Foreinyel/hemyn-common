@@ -1,4 +1,3 @@
-"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -21,15 +20,11 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(require("react"));
-var pro_layout_1 = require("@ant-design/pro-layout");
-var antd_1 = require("antd");
-exports.default = (function (props) {
+import React from "react";
+import { PageContainer } from "@ant-design/pro-layout";
+import Spin from "antd/es/spin";
+export default (function (props) {
     var _a = props.loading, loading = _a === void 0 ? false : _a, restProps = __rest(props, ["loading"]);
-    return (react_1.default.createElement(pro_layout_1.PageContainer, __assign({}, restProps),
-        react_1.default.createElement(antd_1.Spin, { spinning: loading }, props.children)));
+    return (React.createElement(PageContainer, __assign({}, restProps),
+        React.createElement(Spin, { spinning: loading }, props.children)));
 });

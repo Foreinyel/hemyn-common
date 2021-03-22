@@ -1,6 +1,6 @@
 import React from "react";
 import { PageContainer } from "@ant-design/pro-layout";
-import { Spin } from "antd";
+import Spin from "antd/es/spin";
 import { PageContainerProps as AntPageContainerProps } from "@ant-design/pro-layout/lib/components/PageContainer";
 
 export interface PageContainerProps extends AntPageContainerProps {

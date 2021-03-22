@@ -1,5 +1,6 @@
 import React from "react";
-import { Row as AntdRow, Col as AntdCol } from "antd";
+import AntdRow from "antd/es/row";
+import AntdCol from "antd/es/col";
 import { RowProps as AntdRowProps } from "antd/lib/row";
 import { ColProps as AntdColProps } from "antd/lib/col";
 

@@ -1,5 +1,6 @@
 import React from "react";
-import { Form as AntdForm, Button as AntdButton } from "antd";
+import AntdForm from "antd/es/form";
+import AntdButton from "antd/es/button";
 import { FormProps } from "antd/lib/form/Form";
 import { ButtonProps } from "antd/lib/button";
 import classnames from "classnames";

@@ -95,9 +95,14 @@ instance.interceptors.response.use(function (res) {
     message.error("请求失败");
     throw new Error("请求失败");
 }, function (err) {
-    if (err && err.message && err.message.indexOf("401") >= 0) {
-        message.error("没有权限，请联系管理员!");
+    var data = err.response.data;
+    if (data.statusCode === 401) {
+        message.error("没有权限，或登录状态失效!");
         window.location.href = "/login";
+    }
+    else if (data.message) {
+        // message.error("请求失败，请稍后再试");
+        message.error(data.message.join(";"));
     }
     else {
         message.error("请求失败，请稍后再试!");
