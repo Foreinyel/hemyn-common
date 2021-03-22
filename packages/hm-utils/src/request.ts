@@ -60,9 +60,6 @@ instance.interceptors.response.use(
       }
       return Promise.resolve();
     }
-
-    console.log(res);
-
     if (
       `${res.status}` in NormalHttpStatusCode &&
       res.data &&
@@ -80,6 +77,7 @@ instance.interceptors.response.use(
   (err) => {
     if (err && err.message && err.message.indexOf("401") >= 0) {
       message.error("没有权限，请联系管理员!");
+      window.location.href = "/login";
     } else {
       message.error("请求失败，请稍后再试!");
     }
