@@ -15,5 +15,6 @@ export default (function (_a) {
             React.createElement(Col, null,
                 React.createElement(SyncOutlined, { style: { marginLeft: 20 }, spin: loading, onClick: onRefresh }))),
         React.createElement(Divider, { dashed: true }),
-        React.createElement(Row, null, children)));
+        React.createElement(Row, null,
+            React.createElement(Col, { flex: 1 }, children))));
 });

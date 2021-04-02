@@ -45,7 +45,9 @@ export default ({
         </Col>
       </Row>
       <Divider dashed />
-      <Row>{children}</Row>
+      <Row>
+        <Col flex={1}>{children}</Col>
+      </Row>
     </WhiteCard>
   );
 };
