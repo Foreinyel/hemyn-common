@@ -32,13 +32,12 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use(
   (res) => {
     if (res.headers["content-type"] === "application/octet-stream") {
-      const filename = res.headers["content-disposition"].match(
-        /filename=(.*)/
-      )[1];
+      const filename =
+        res.headers["content-disposition"].match(/filename=(.*)/)[1];
       const blob = new Blob([res.data], { type: "application/octet-stream" });
-      if (typeof window.navigator.msSaveBlob !== "undefined") {
+      if (typeof (window.navigator as any).msSaveBlob !== "undefined") {
         // 兼容IE，window.navigator.msSaveBlob：以本地方式保存文件
-        window.navigator.msSaveBlob(blob, decodeURI(filename));
+        (window.navigator as any).msSaveBlob(blob, decodeURI(filename));
       } else {
         // 创建新的URL并指向File对象或者Blob对象的地址
         const blobURL = window.URL.createObjectURL(blob);

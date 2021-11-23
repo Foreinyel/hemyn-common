@@ -50,7 +50,7 @@ var instance = axios.create({
 instance.interceptors.request.use(function (config) {
     var token = getToken();
     if (token) {
-        config.headers.Authorization = "Bearer " + token;
+        config.headers.Authorization = "Bearer ".concat(token);
     }
     return config;
 });
@@ -83,7 +83,7 @@ instance.interceptors.response.use(function (res) {
         }
         return Promise.resolve();
     }
-    if ("" + res.status in NormalHttpStatusCode &&
+    if ("".concat(res.status) in NormalHttpStatusCode &&
         res.data &&
         res.data.code === 0) {
         return Promise.resolve(res.data.data);
@@ -120,10 +120,10 @@ export var rGet = function (path) { return __awaiter(void 0, void 0, void 0, fun
         switch (_a.label) {
             case 0:
                 if (path.indexOf("?") >= 0) {
-                    _path = path + "&t=" + Date.now();
+                    _path = "".concat(path, "&t=").concat(Date.now());
                 }
                 else {
-                    _path = path + "?t=" + Date.now();
+                    _path = "".concat(path, "?t=").concat(Date.now());
                 }
                 return [4 /*yield*/, instance.get(_path, {
                         method: "get",
