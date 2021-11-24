@@ -96,4 +96,27 @@ export default (options: RequestOptions) => {
       }
     }
   );
+
+  const rPost = async <T, U>(path: string, data: T) =>
+    await instance.post<U, U>(path, data);
+  const rGet = async <U>(path: string) => {
+    let _path: string;
+
+    if (path.indexOf("?") >= 0) {
+      _path = `${path}&t=${Date.now()}`;
+    } else {
+      _path = `${path}?t=${Date.now()}`;
+    }
+
+    return await instance.get<U, U>(_path, {
+      method: "get",
+    });
+  };
+
+  const rPut = async <T, U>(path: string, data: T) =>
+    await instance.put<U, U>(path, {
+      method: "put",
+      data,
+    });
+  return { rPost, rGet, rPut };
 };

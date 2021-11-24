@@ -5,5 +5,9 @@ export interface RequestOptions {
     getErr?: (res: any) => string;
     getData?: (res: any) => any;
 }
-declare const _default: (options: RequestOptions) => void;
+declare const _default: (options: RequestOptions) => {
+    rPost: <T, U>(path: string, data: T) => Promise<U>;
+    rGet: <U_1>(path: string) => Promise<U_1>;
+    rPut: <T_1, U_2>(path: string, data: T_1) => Promise<U_2>;
+};
 export default _default;
