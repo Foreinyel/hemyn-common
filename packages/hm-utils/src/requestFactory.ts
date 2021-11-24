@@ -118,5 +118,6 @@ export default (options: RequestOptions) => {
       method: "put",
       data,
     });
+
   return { rPost, rGet, rPut };
 };
