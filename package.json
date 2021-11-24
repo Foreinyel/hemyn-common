@@ -5,7 +5,7 @@
   ],
   "private": true,
   "scripts": {
-    "pub": "npm login && lerna publish"
+    "pub": "yarn workspaces run build && npm login && lerna publish"
   },
   "devDependencies": {
     "lerna": "^3.22.1",
