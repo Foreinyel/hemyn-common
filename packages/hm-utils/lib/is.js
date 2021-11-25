@@ -33,3 +33,11 @@ export var isPassword = function (password) {
     var reg = /^.{6,}$/;
     return reg.test(password);
 };
+/**
+ * @description 是否是邮箱格式
+ * @param mail
+ * @returns boolean
+ */
+export var isMail = function (mail) {
+    return /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/.test(mail);
+};

@@ -16,3 +16,9 @@ export declare const qs2Obj: (qs: string) => any;
  * @returns boolean
  */
 export declare const isPassword: (password: string) => boolean;
+/**
+ * @description 是否是邮箱格式
+ * @param mail
+ * @returns boolean
+ */
+export declare const isMail: (mail: string) => boolean;
