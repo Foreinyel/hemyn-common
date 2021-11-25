@@ -111,10 +111,11 @@ export default (function (options) {
             var data = err.response.data;
             if (data.statusCode === 401) {
                 message.error("没有权限，或登录状态失效!");
-                window.location.href = "/login";
+                throw new Error("没有权限，或登录状态失效!");
             }
             else if (data.message) {
                 message.error(data.message.join(";"));
+                throw new Error(data.message.join(";"));
             }
             else {
                 message.error("请求失败，请稍后再试!");
@@ -123,6 +124,7 @@ export default (function (options) {
         else {
             message.error("请求失败，请稍后再试!");
         }
+        throw new Error("请求失败，请稍后再试!");
     });
     var rPost = function (path, data) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
         switch (_a.label) {
