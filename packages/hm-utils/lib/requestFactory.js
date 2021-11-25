@@ -107,13 +107,18 @@ export default (function (options) {
         message.error("请求失败");
         throw new Error("请求失败");
     }, function (err) {
-        var data = err.response.data;
-        if (data.statusCode === 401) {
-            message.error("没有权限，或登录状态失效!");
-            window.location.href = "/login";
-        }
-        else if (data.message) {
-            message.error(data.message.join(";"));
+        if (err.response) {
+            var data = err.response.data;
+            if (data.statusCode === 401) {
+                message.error("没有权限，或登录状态失效!");
+                window.location.href = "/login";
+            }
+            else if (data.message) {
+                message.error(data.message.join(";"));
+            }
+            else {
+                message.error("请求失败，请稍后再试!");
+            }
         }
         else {
             message.error("请求失败，请稍后再试!");

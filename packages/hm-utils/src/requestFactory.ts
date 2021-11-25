@@ -82,15 +82,19 @@ export default (options: RequestOptions) => {
       throw new Error("请求失败");
     },
     (err) => {
-      const {
-        response: { data },
-      } = err;
+      if (err.response) {
+        const {
+          response: { data },
+        } = err;
 
-      if (data.statusCode === 401) {
-        message.error("没有权限，或登录状态失效!");
-        window.location.href = "/login";
-      } else if (data.message) {
-        message.error(data.message.join(";"));
+        if (data.statusCode === 401) {
+          message.error("没有权限，或登录状态失效!");
+          window.location.href = "/login";
+        } else if (data.message) {
+          message.error(data.message.join(";"));
+        } else {
+          message.error("请求失败，请稍后再试!");
+        }
       } else {
         message.error("请求失败，请稍后再试!");
       }
