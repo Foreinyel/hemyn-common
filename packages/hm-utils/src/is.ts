@@ -34,3 +34,13 @@ export const isPassword = (password: string) => {
   const reg = /^.{6,}$/;
   return reg.test(password);
 };
+
+/**
+ * @description 是否是邮箱格式
+ * @param mail
+ * @returns boolean
+ */
+export const isMail = (mail: string) =>
+  /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/.test(
+    mail
+  );
