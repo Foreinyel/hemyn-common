@@ -9,6 +9,8 @@ export interface RequestOptions {
   isOk?: (res: any) => boolean;
   getErr?: (res: any) => string;
   getData?: (res: any) => any;
+  on401?: () => void;
+  statusCodeKey?: string;
 }
 
 type Required<T> = {
@@ -27,6 +29,7 @@ const defaultOptions: RequestOptions = {
   isOk: (res) => res.data && res.data.code === 0,
   getErr: (res) => res.data && res.data.message,
   getData: (res: any) => res.data?.data,
+  statusCodeKey: "statusCode",
 };
 
 export default (options: RequestOptions) => {
@@ -87,9 +90,12 @@ export default (options: RequestOptions) => {
           response: { data },
         } = err;
 
-        if (data.statusCode === 401) {
-          message.error("没有权限，或登录状态失效!");
-          throw new Error("没有权限，或登录状态失效!");
+        if (data[mergedOptions.statusCodeKey] === 401) {
+          message.error(data.message || "没有权限，或登录状态失效!");
+          if (mergedOptions.on401) {
+            mergedOptions.on401();
+          }
+          throw new Error(data.message || "没有权限，或登录状态失效!");
         } else if (data.message) {
           message.error(data.message.join(";"));
           throw new Error(data.message.join(";"));

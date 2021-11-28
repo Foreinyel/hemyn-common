@@ -1,1 +1,1 @@
-export declare const USER_TOKEN_KEY = "auto-token";
+export declare const USER_TOKEN_KEY = "auth-token";

@@ -4,6 +4,8 @@ export interface RequestOptions {
     isOk?: (res: any) => boolean;
     getErr?: (res: any) => string;
     getData?: (res: any) => any;
+    on401?: () => void;
+    statusCodeKey?: string;
 }
 declare const _default: (options: RequestOptions) => {
     rPost: <T, U>(path: string, data: T) => Promise<U>;

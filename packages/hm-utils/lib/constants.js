@@ -1,1 +1,1 @@
-export var USER_TOKEN_KEY = "auto-token";
+export var USER_TOKEN_KEY = "auth-token";

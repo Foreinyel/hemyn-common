@@ -61,6 +61,7 @@ var defaultOptions = {
     isOk: function (res) { return res.data && res.data.code === 0; },
     getErr: function (res) { return res.data && res.data.message; },
     getData: function (res) { var _a; return (_a = res.data) === null || _a === void 0 ? void 0 : _a.data; },
+    statusCodeKey: "statusCode",
 };
 export default (function (options) {
     var mergedOptions = __assign(__assign({}, defaultOptions), options);
@@ -109,9 +110,12 @@ export default (function (options) {
     }, function (err) {
         if (err.response) {
             var data = err.response.data;
-            if (data.statusCode === 401) {
-                message.error("没有权限，或登录状态失效!");
-                throw new Error("没有权限，或登录状态失效!");
+            if (data[mergedOptions.statusCodeKey] === 401) {
+                message.error(data.message || "没有权限，或登录状态失效!");
+                if (mergedOptions.on401) {
+                    mergedOptions.on401();
+                }
+                throw new Error(data.message || "没有权限，或登录状态失效!");
             }
             else if (data.message) {
                 message.error(data.message.join(";"));
