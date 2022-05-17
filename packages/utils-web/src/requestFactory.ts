@@ -42,7 +42,7 @@ export default (options: RequestOptions) => {
     timeout: mergedOptions.timeout,
   });
 
-  instance.interceptors.request.use(mergedOptions.requestInterceptors);
+  instance.interceptors.request.use(mergedOptions.requestInterceptors as any);
 
   instance.interceptors.response.use(
     (res) => {

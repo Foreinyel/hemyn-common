@@ -1,5 +1,5 @@
 {
-  "name": "@hemyn/utils",
+  "name": "@hemyn/utils-web",
   "version": "0.1.27",
   "description": "",
   "main": "lib/index.js",
@@ -7,7 +7,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "build": "tsc"
   },
   "keywords": [],
