@@ -41,14 +41,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.download = void 0;
 var http_1 = __importDefault(require("http"));
+var https_1 = __importDefault(require("https"));
 var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var assert_1 = __importDefault(require("assert"));
 var compressing_1 = __importDefault(require("compressing"));
 var get_file = function (url, dest) {
+    var client = url.startsWith("https") ? https_1.default : http_1.default;
     return new Promise(function (resolve) {
         var writeStream = fs_1.default.createWriteStream(dest);
-        http_1.default.get(url, function (res) {
+        client.get(url, function (res) {
             res.pipe(writeStream);
         });
         writeStream.on("finish", function () {
