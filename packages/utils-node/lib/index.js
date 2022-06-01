@@ -13,3 +13,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./file-utils"), exports);
 __exportStar(require("./download"), exports);
 __exportStar(require("./rm"), exports);
+__exportStar(require("./version"), exports);
