@@ -14,3 +14,4 @@ __exportStar(require("./file-utils"), exports);
 __exportStar(require("./download"), exports);
 __exportStar(require("./rm"), exports);
 __exportStar(require("./version"), exports);
+__exportStar(require("./naming"), exports);
