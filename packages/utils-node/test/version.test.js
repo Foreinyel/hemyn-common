@@ -1,5 +1,5 @@
 const path = require("path");
-const { getNextVersion } = require("../lib");
+const { getNextVersion, versionCompare } = require("../lib");
 
 describe("version", () => {
   test("getNextVersion: get default version", async () => {
@@ -25,5 +25,16 @@ describe("version", () => {
     expect(getNextVersion({ version: "1.0.1-beta.0", beta: true })).toBe(
       "1.0.1-beta.1"
     );
+  });
+
+  test("versionCompare", async () => {
+    expect(versionCompare("1.2.3", "1.2.2")).toBeTruthy();
+    expect(versionCompare("1.2.3", "1.2.4")).toBeFalsy();
+    expect(versionCompare("1.4.3", "1.2.4")).toBeTruthy();
+    expect(versionCompare("1.4.3", "1.4.3")).toBeFalsy();
+    expect(versionCompare("2.4.3", "1.4.3")).toBeTruthy();
+    expect(versionCompare("2.4.3", "2.4.3-0")).toBeFalsy();
+    expect(versionCompare("2.4.2-0", "2.4.3")).toBeFalsy();
+    expect(versionCompare("2.4.2-0", "2.4.2-1")).toBeFalsy();
   });
 });

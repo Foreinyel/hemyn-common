@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getNextVersion = void 0;
+exports.versionCompare = exports.getNextVersion = void 0;
+var assert_1 = __importDefault(require("assert"));
 var getNextVersion = function (param) {
     var _a = param || {}, version = _a.version, beta = _a.beta;
     if (!version) {
@@ -20,3 +24,30 @@ var getNextVersion = function (param) {
     }
 };
 exports.getNextVersion = getNextVersion;
+/**
+ * va > vb
+ * @param va
+ * @param vb
+ */
+var versionCompare = function (va, vb) {
+    var versionsOfA = va.match(/\d/g);
+    var versionsOfB = vb.match(/\d/g);
+    assert_1.default.ok((versionsOfA === null || versionsOfA === void 0 ? void 0 : versionsOfA.length) && (versionsOfB === null || versionsOfB === void 0 ? void 0 : versionsOfB.length), "invalid va or vb");
+    var times = versionsOfA.length > versionsOfB.length
+        ? versionsOfB.length
+        : versionsOfA.length;
+    var i = 0;
+    while (i < times) {
+        var a = Number(versionsOfA[i]);
+        var b = Number(versionsOfB[i]);
+        if (a > b) {
+            return true;
+        }
+        else if (a < b) {
+            return false;
+        }
+        i++;
+    }
+    return versionsOfA.length > versionsOfB.length ? true : false;
+};
+exports.versionCompare = versionCompare;
