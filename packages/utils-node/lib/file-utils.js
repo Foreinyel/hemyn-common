@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listFiles = void 0;
+exports.listFolders = exports.listFiles = void 0;
 var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var util_1 = __importDefault(require("util"));
@@ -79,3 +79,36 @@ var listFiles = function (cwd) { return __awaiter(void 0, void 0, void 0, functi
     });
 }); };
 exports.listFiles = listFiles;
+var listFolders = function (cwd) { return __awaiter(void 0, void 0, void 0, function () {
+    var folderList, files, _i, files_2, file, fPath, stat, subFolderList;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                folderList = [];
+                return [4 /*yield*/, readdir(cwd)];
+            case 1:
+                files = _a.sent();
+                _i = 0, files_2 = files;
+                _a.label = 2;
+            case 2:
+                if (!(_i < files_2.length)) return [3 /*break*/, 6];
+                file = files_2[_i];
+                fPath = path_1.default.join(cwd, file);
+                return [4 /*yield*/, statfile(fPath)];
+            case 3:
+                stat = _a.sent();
+                if (!stat.isDirectory()) return [3 /*break*/, 5];
+                folderList.push(fPath);
+                return [4 /*yield*/, (0, exports.listFolders)(fPath)];
+            case 4:
+                subFolderList = _a.sent();
+                folderList.push.apply(folderList, subFolderList);
+                _a.label = 5;
+            case 5:
+                _i++;
+                return [3 /*break*/, 2];
+            case 6: return [2 /*return*/, folderList];
+        }
+    });
+}); };
+exports.listFolders = listFolders;

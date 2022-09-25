@@ -1,5 +1,5 @@
 const path = require("path");
-const { listFiles } = require("../lib");
+const { listFiles, listFolders } = require("../lib");
 
 describe("file-utils", () => {
   test("listFiles", async () => {
@@ -8,5 +8,10 @@ describe("file-utils", () => {
       filename.indexOf("file-utils.test.js")
     );
     expect(foundTestFile).toBeTruthy();
+  });
+
+  test("listFolders", async () => {
+    const folders = await listFolders(path.resolve(__dirname, "../src"));
+    expect(folders.length === 1);
   });
 });

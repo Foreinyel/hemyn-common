@@ -20,3 +20,18 @@ export const listFiles = async (cwd: string) => {
   }
   return fileList;
 };
+export const listFolders = async (cwd: string) => {
+  const folderList: string[] = [];
+  const files = await readdir(cwd);
+  for (let file of files) {
+    let fPath = path.join(cwd, file);
+    const stat = await statfile(fPath);
+    if (stat.isDirectory()) {
+      folderList.push(fPath);
+
+      const subFolderList = await listFolders(fPath);
+      folderList.push(...subFolderList);
+    }
+  }
+  return folderList;
+};
