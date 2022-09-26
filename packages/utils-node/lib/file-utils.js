@@ -45,39 +45,44 @@ var path_1 = __importDefault(require("path"));
 var util_1 = __importDefault(require("util"));
 var readdir = util_1.default.promisify(fs_1.default.readdir);
 var statfile = util_1.default.promisify(fs_1.default.stat);
-var listFiles = function (cwd) { return __awaiter(void 0, void 0, void 0, function () {
-    var fileList, files, _i, files_1, file, fPath, stat, subFileList;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                fileList = [];
-                return [4 /*yield*/, readdir(cwd)];
-            case 1:
-                files = _a.sent();
-                _i = 0, files_1 = files;
-                _a.label = 2;
-            case 2:
-                if (!(_i < files_1.length)) return [3 /*break*/, 7];
-                file = files_1[_i];
-                fPath = path_1.default.join(cwd, file);
-                return [4 /*yield*/, statfile(fPath)];
-            case 3:
-                stat = _a.sent();
-                if (!stat.isFile()) return [3 /*break*/, 4];
-                fileList.push(fPath);
-                return [3 /*break*/, 6];
-            case 4: return [4 /*yield*/, (0, exports.listFiles)(fPath)];
-            case 5:
-                subFileList = _a.sent();
-                fileList.push.apply(fileList, subFileList);
-                _a.label = 6;
-            case 6:
-                _i++;
-                return [3 /*break*/, 2];
-            case 7: return [2 /*return*/, fileList];
-        }
+var listFiles = function (cwd, excludes) {
+    if (excludes === void 0) { excludes = []; }
+    return __awaiter(void 0, void 0, void 0, function () {
+        var fileList, files, _i, files_1, file, fPath, stat, subFileList;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    fileList = [];
+                    return [4 /*yield*/, readdir(cwd)];
+                case 1:
+                    files = _a.sent();
+                    _i = 0, files_1 = files;
+                    _a.label = 2;
+                case 2:
+                    if (!(_i < files_1.length)) return [3 /*break*/, 7];
+                    file = files_1[_i];
+                    fPath = path_1.default.join(cwd, file);
+                    return [4 /*yield*/, statfile(fPath)];
+                case 3:
+                    stat = _a.sent();
+                    if (!stat.isFile()) return [3 /*break*/, 4];
+                    fileList.push(fPath);
+                    return [3 /*break*/, 6];
+                case 4:
+                    if (!!excludes.includes(fPath)) return [3 /*break*/, 6];
+                    return [4 /*yield*/, (0, exports.listFiles)(fPath)];
+                case 5:
+                    subFileList = _a.sent();
+                    fileList.push.apply(fileList, subFileList);
+                    _a.label = 6;
+                case 6:
+                    _i++;
+                    return [3 /*break*/, 2];
+                case 7: return [2 /*return*/, fileList];
+            }
+        });
     });
-}); };
+};
 exports.listFiles = listFiles;
 var listFolders = function (cwd, excludes) {
     if (excludes === void 0) { excludes = []; }
