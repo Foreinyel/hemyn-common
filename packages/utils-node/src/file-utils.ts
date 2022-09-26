@@ -5,7 +5,7 @@ import util from "util";
 const readdir = util.promisify(fs.readdir);
 const statfile = util.promisify(fs.stat);
 
-export const listFiles = async (cwd: string) => {
+export const listFiles = async (cwd: string, excludes: string[] = []) => {
   const fileList: string[] = [];
   const files = await readdir(cwd);
   for (let file of files) {
@@ -13,7 +13,7 @@ export const listFiles = async (cwd: string) => {
     const stat = await statfile(fPath);
     if (stat.isFile()) {
       fileList.push(fPath);
-    } else {
+    } else if (!excludes.includes(fPath)) {
       const subFileList = await listFiles(fPath);
       fileList.push(...subFileList);
     }
