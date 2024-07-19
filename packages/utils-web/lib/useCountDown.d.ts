@@ -1,5 +1,5 @@
 declare const useCountDown: () => {
-    current: number;
+    current: any;
     start: (origin: number, delay: number, callback: (...param: any[]) => void) => void;
     stop: () => void;
 };

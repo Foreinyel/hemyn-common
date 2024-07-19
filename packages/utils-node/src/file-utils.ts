@@ -5,6 +5,12 @@ import util from "util";
 const readdir = util.promisify(fs.readdir);
 const statfile = util.promisify(fs.stat);
 
+export interface FileItem {
+  type: "folder" | "file";
+  path: string;
+  children?: FileItem[];
+}
+
 export const listFiles = async (cwd: string, excludes: string[] = []) => {
   const fileList: string[] = [];
   const files = await readdir(cwd);
@@ -34,4 +40,28 @@ export const listFolders = async (cwd: string, excludes: string[] = []) => {
     }
   }
   return folderList;
+};
+
+export const listAll = async (cwd: string) => {
+  const folderList = await listFolders(cwd);
+  const fileList = await listFiles(cwd);
+  const all: FileItem[] = [];
+
+  for (let folder of folderList) {
+    let children = await listAll(folder);
+    all.push({
+      type: "folder",
+      path: folder,
+      children,
+    });
+  }
+
+  for (let fileItem of fileList) {
+    all.push({
+      type: "file",
+      path: fileItem,
+    });
+  }
+
+  return all;
 };

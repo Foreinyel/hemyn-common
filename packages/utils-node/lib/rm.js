@@ -7,7 +7,7 @@ exports.rm = void 0;
 var rimraf_1 = __importDefault(require("rimraf"));
 var rm = function (dest) {
     return new Promise(function (resolve) {
-        (0, rimraf_1.default)(dest, function () {
+        rimraf_1.default(dest, function () {
             resolve(true);
         });
     });

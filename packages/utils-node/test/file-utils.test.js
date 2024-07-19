@@ -1,5 +1,5 @@
 const path = require("path");
-const { listFiles, listFolders } = require("../lib");
+const { listFiles, listFolders, listAll } = require("../lib");
 
 describe("file-utils", () => {
   test("listFiles", async () => {
@@ -13,5 +13,10 @@ describe("file-utils", () => {
   test("listFolders", async () => {
     const folders = await listFolders(path.resolve(__dirname, "../src"));
     expect(folders.length === 1);
+  });
+
+  test("listAll", async () => {
+    const allFileItems = await listAll(path.resolve(__dirname, "../src"));
+    expect(allFileItems.length === 7);
   });
 });

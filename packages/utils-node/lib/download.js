@@ -66,7 +66,7 @@ var download = function (options) { return __awaiter(void 0, void 0, void 0, fun
         switch (_c.label) {
             case 0:
                 filename = options.filename || ((_b = (_a = new URL(options.url)) === null || _a === void 0 ? void 0 : _a.pathname) === null || _b === void 0 ? void 0 : _b.split("/").pop());
-                (0, assert_1.default)(!!filename, "Invalid filename.");
+                assert_1.default(!!filename, "Invalid filename.");
                 dest = path_1.default.resolve(options.dest, filename);
                 return [4 /*yield*/, get_file(options.url, dest)];
             case 1:
