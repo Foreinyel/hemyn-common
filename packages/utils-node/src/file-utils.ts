@@ -42,25 +42,29 @@ export const listFolders = async (cwd: string, excludes: string[] = []) => {
   return folderList;
 };
 
-export const listAll = async (cwd: string) => {
+export const listAll = async (cwd: string, excludes: string[] = []) => {
   const folderList = await listFolders(cwd);
   const fileList = await listFiles(cwd);
   const all: FileItem[] = [];
 
   for (let folder of folderList) {
-    let children = await listAll(folder);
-    all.push({
-      type: "folder",
-      path: folder,
-      children,
-    });
+    if (!excludes.includes(folder)) {
+      let children = await listAll(folder);
+      all.push({
+        type: "folder",
+        path: folder,
+        children,
+      });
+    }
   }
 
   for (let fileItem of fileList) {
-    all.push({
-      type: "file",
-      path: fileItem,
-    });
+    if (!excludes.includes(fileItem)) {
+      all.push({
+        type: "file",
+        path: fileItem,
+      });
+    }
   }
 
   return all;
