@@ -120,44 +120,50 @@ var listFolders = function (cwd, excludes) {
     });
 };
 exports.listFolders = listFolders;
-var listAll = function (cwd) { return __awaiter(void 0, void 0, void 0, function () {
-    var folderList, fileList, all, _i, folderList_1, folder, children, _a, fileList_1, fileItem;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0: return [4 /*yield*/, exports.listFolders(cwd)];
-            case 1:
-                folderList = _b.sent();
-                return [4 /*yield*/, exports.listFiles(cwd)];
-            case 2:
-                fileList = _b.sent();
-                all = [];
-                _i = 0, folderList_1 = folderList;
-                _b.label = 3;
-            case 3:
-                if (!(_i < folderList_1.length)) return [3 /*break*/, 6];
-                folder = folderList_1[_i];
-                return [4 /*yield*/, exports.listAll(folder)];
-            case 4:
-                children = _b.sent();
-                all.push({
-                    type: "folder",
-                    path: folder,
-                    children: children,
-                });
-                _b.label = 5;
-            case 5:
-                _i++;
-                return [3 /*break*/, 3];
-            case 6:
-                for (_a = 0, fileList_1 = fileList; _a < fileList_1.length; _a++) {
-                    fileItem = fileList_1[_a];
+var listAll = function (cwd, excludes) {
+    if (excludes === void 0) { excludes = []; }
+    return __awaiter(void 0, void 0, void 0, function () {
+        var folderList, fileList, all, _i, folderList_1, folder, children, _a, fileList_1, fileItem;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, exports.listFolders(cwd)];
+                case 1:
+                    folderList = _b.sent();
+                    return [4 /*yield*/, exports.listFiles(cwd)];
+                case 2:
+                    fileList = _b.sent();
+                    all = [];
+                    _i = 0, folderList_1 = folderList;
+                    _b.label = 3;
+                case 3:
+                    if (!(_i < folderList_1.length)) return [3 /*break*/, 6];
+                    folder = folderList_1[_i];
+                    if (!!excludes.includes(folder)) return [3 /*break*/, 5];
+                    return [4 /*yield*/, exports.listAll(folder)];
+                case 4:
+                    children = _b.sent();
                     all.push({
-                        type: "file",
-                        path: fileItem,
+                        type: "folder",
+                        path: folder,
+                        children: children,
                     });
-                }
-                return [2 /*return*/, all];
-        }
+                    _b.label = 5;
+                case 5:
+                    _i++;
+                    return [3 /*break*/, 3];
+                case 6:
+                    for (_a = 0, fileList_1 = fileList; _a < fileList_1.length; _a++) {
+                        fileItem = fileList_1[_a];
+                        if (!excludes.includes(fileItem)) {
+                            all.push({
+                                type: "file",
+                                path: fileItem,
+                            });
+                        }
+                    }
+                    return [2 /*return*/, all];
+            }
+        });
     });
-}); };
+};
 exports.listAll = listAll;
