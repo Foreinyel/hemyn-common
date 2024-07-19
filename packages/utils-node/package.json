@@ -1,6 +1,6 @@
 {
   "name": "@hemyn/utils-node",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "devDependencies": {
     "jest": "^28.1.0"
   },
-  "gitHead": "243053f7bf930f666f69b1fb9405640a4dc7ca62",
+  "gitHead": "62d5e86a3abf07326a80cadd6b4e47cdf7251d56",
   "publishConfig": {
     "access": "public"
   },
