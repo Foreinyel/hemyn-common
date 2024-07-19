@@ -48,7 +48,7 @@ export const listAll = async (cwd: string, excludes: string[] = []) => {
   const all: FileItem[] = [];
 
   for (let folder of folderList) {
-    if (!excludes.includes(folder)) {
+    if (!excludes.some((ex) => folder.startsWith(ex))) {
       let children = await listAll(folder);
       all.push({
         type: "folder",
@@ -59,7 +59,7 @@ export const listAll = async (cwd: string, excludes: string[] = []) => {
   }
 
   for (let fileItem of fileList) {
-    if (!excludes.includes(fileItem)) {
+    if (!excludes.some((ex) => fileItem.startsWith(ex))) {
       all.push({
         type: "file",
         path: fileItem,
