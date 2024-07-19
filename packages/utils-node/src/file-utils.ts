@@ -11,7 +11,11 @@ export interface FileItem {
   children?: FileItem[];
 }
 
-export const listFiles = async (cwd: string, excludes: string[] = []) => {
+export const listFiles = async (
+  cwd: string,
+  excludes: string[] = [],
+  dep = true
+) => {
   const fileList: string[] = [];
   const files = await readdir(cwd);
   for (let file of files) {
@@ -19,14 +23,18 @@ export const listFiles = async (cwd: string, excludes: string[] = []) => {
     const stat = await statfile(fPath);
     if (stat.isFile()) {
       fileList.push(fPath);
-    } else if (!excludes.includes(fPath)) {
+    } else if (!excludes.includes(fPath) && dep) {
       const subFileList = await listFiles(fPath);
       fileList.push(...subFileList);
     }
   }
   return fileList;
 };
-export const listFolders = async (cwd: string, excludes: string[] = []) => {
+export const listFolders = async (
+  cwd: string,
+  excludes: string[] = [],
+  dep = true
+) => {
   const folderList: string[] = [];
   const files = await readdir(cwd);
   for (let file of files) {
@@ -35,16 +43,18 @@ export const listFolders = async (cwd: string, excludes: string[] = []) => {
     if (stat.isDirectory() && !excludes.includes(fPath)) {
       folderList.push(fPath);
 
-      const subFolderList = await listFolders(fPath);
-      folderList.push(...subFolderList);
+      if (dep) {
+        const subFolderList = await listFolders(fPath);
+        folderList.push(...subFolderList);
+      }
     }
   }
   return folderList;
 };
 
 export const listAll = async (cwd: string, excludes: string[] = []) => {
-  const folderList = await listFolders(cwd);
-  const fileList = await listFiles(cwd);
+  const folderList = await listFolders(cwd, excludes, false);
+  const fileList = await listFiles(cwd, excludes, false);
   const all: FileItem[] = [];
 
   for (let folder of folderList) {
