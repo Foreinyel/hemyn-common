@@ -1,0 +1,37 @@
+{
+  "name": "utils-weapp",
+  "version": "0.4.3",
+  "description": "> TODO: description",
+  "author": "Foreinyel <Foreinyel@163.com>",
+  "homepage": "https://github.com/Foreinyel/hemyn-common#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://r.cnpmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Foreinyel/hemyn-common.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "build": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/Foreinyel/hemyn-common/issues"
+  },
+  "peerDependencies": {
+    "@types/node": "^14.14.35",
+    "@types/react": "^17.0.2",
+    "react": "^17.0.1",
+    "typescript": "^4.2.3"
+  }
+}
