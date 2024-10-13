@@ -15,12 +15,12 @@ var getNextVersion = function (param) {
     var _c = versionPart.split("."), major = _c[0], minor = _c[1], patch = _c[2];
     var betaNo = isBeta ? betaPart.split(".")[1] : "";
     if (isBeta) {
-        return beta ? versionPart + "-beta." + (parseInt(betaNo) + 1) : versionPart;
+        return beta ? "".concat(versionPart, "-beta.").concat(parseInt(betaNo) + 1) : versionPart;
     }
     else {
         return beta
-            ? major + "." + minor + "." + (parseInt(patch) + 1) + "-beta.0"
-            : major + "." + minor + "." + (parseInt(patch) + 1);
+            ? "".concat(major, ".").concat(minor, ".").concat(parseInt(patch) + 1, "-beta.0")
+            : "".concat(major, ".").concat(minor, ".").concat(parseInt(patch) + 1);
     }
 };
 exports.getNextVersion = getNextVersion;

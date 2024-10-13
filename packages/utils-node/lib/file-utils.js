@@ -71,7 +71,7 @@ var listFiles = function (cwd, excludes, dep) {
                     return [3 /*break*/, 6];
                 case 4:
                     if (!(!excludes.includes(fPath) && dep)) return [3 /*break*/, 6];
-                    return [4 /*yield*/, exports.listFiles(fPath)];
+                    return [4 /*yield*/, (0, exports.listFiles)(fPath)];
                 case 5:
                     subFileList = _a.sent();
                     fileList.push.apply(fileList, subFileList);
@@ -109,7 +109,7 @@ var listFolders = function (cwd, excludes, dep) {
                     if (!(stat.isDirectory() && !excludes.includes(fPath))) return [3 /*break*/, 5];
                     folderList.push(fPath);
                     if (!dep) return [3 /*break*/, 5];
-                    return [4 /*yield*/, exports.listFolders(fPath)];
+                    return [4 /*yield*/, (0, exports.listFolders)(fPath)];
                 case 4:
                     subFolderList = _a.sent();
                     folderList.push.apply(folderList, subFolderList);
@@ -129,10 +129,10 @@ var listAll = function (cwd, excludes) {
         var folderList, fileList, all, _loop_1, _i, folderList_1, folder, _loop_2, _a, fileList_1, fileItem;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, exports.listFolders(cwd, excludes, false)];
+                case 0: return [4 /*yield*/, (0, exports.listFolders)(cwd, excludes, false)];
                 case 1:
                     folderList = _b.sent();
-                    return [4 /*yield*/, exports.listFiles(cwd, excludes, false)];
+                    return [4 /*yield*/, (0, exports.listFiles)(cwd, excludes, false)];
                 case 2:
                     fileList = _b.sent();
                     all = [];
@@ -142,7 +142,7 @@ var listAll = function (cwd, excludes) {
                             switch (_c.label) {
                                 case 0:
                                     if (!!excludes.some(function (ex) { return folder.startsWith(ex); })) return [3 /*break*/, 2];
-                                    return [4 /*yield*/, exports.listAll(folder)];
+                                    return [4 /*yield*/, (0, exports.listAll)(folder)];
                                 case 1:
                                     children = _c.sent();
                                     all.push({
