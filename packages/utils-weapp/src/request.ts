@@ -20,7 +20,7 @@ export {
 export interface Reponse<T> {
   code: number;
   data?: T;
-  message?: string;
+  msg?: string;
 }
 
 const request = async <T, U>(
