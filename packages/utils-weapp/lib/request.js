@@ -91,6 +91,21 @@ export var rGet = function (path, data) { return __awaiter(void 0, void 0, void 
         }
     });
 }); };
+export var rGetQuietly = function (path, data) { return __awaiter(void 0, void 0, void 0, function () {
+    var res, err;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, request(path, "GET", data)];
+            case 1:
+                res = _a.sent();
+                if ((res === null || res === void 0 ? void 0 : res.code) === 0) {
+                    return [2 /*return*/, res === null || res === void 0 ? void 0 : res.data];
+                }
+                err = (res === null || res === void 0 ? void 0 : res.msg) || "系统异常";
+                throw err;
+        }
+    });
+}); };
 export var rPost = function (path, data) { return __awaiter(void 0, void 0, void 0, function () {
     var res, err;
     var _a;
@@ -108,6 +123,21 @@ export var rPost = function (path, data) { return __awaiter(void 0, void 0, void
         }
     });
 }); };
+export var rPostQuietly = function (path, data) { return __awaiter(void 0, void 0, void 0, function () {
+    var res, err;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, request(path, "POST", data)];
+            case 1:
+                res = _a.sent();
+                if ((res === null || res === void 0 ? void 0 : res.code) === 0) {
+                    return [2 /*return*/, res === null || res === void 0 ? void 0 : res.data];
+                }
+                err = (res === null || res === void 0 ? void 0 : res.msg) || "系统异常";
+                throw err;
+        }
+    });
+}); };
 export var rPut = function (path, data) { return __awaiter(void 0, void 0, void 0, function () {
     var res, err;
     var _a;
@@ -121,6 +151,21 @@ export var rPut = function (path, data) { return __awaiter(void 0, void 0, void 
                 }
                 err = (res === null || res === void 0 ? void 0 : res.msg) || "系统异常";
                 (_a = toast === null || toast === void 0 ? void 0 : toast.error) === null || _a === void 0 ? void 0 : _a.call(toast, err);
+                throw err;
+        }
+    });
+}); };
+export var rPutQuietly = function (path, data) { return __awaiter(void 0, void 0, void 0, function () {
+    var res, err;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, request(path, "PUT", data)];
+            case 1:
+                res = _a.sent();
+                if ((res === null || res === void 0 ? void 0 : res.code) === 0) {
+                    return [2 /*return*/, res === null || res === void 0 ? void 0 : res.data];
+                }
+                err = (res === null || res === void 0 ? void 0 : res.msg) || "系统异常";
                 throw err;
         }
     });
