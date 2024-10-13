@@ -1,6 +1,6 @@
 {
   "name": "@hemyn/utils-node",
-  "version": "0.4.8",
+  "version": "0.4.14",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
