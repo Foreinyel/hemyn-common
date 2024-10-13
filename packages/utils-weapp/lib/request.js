@@ -36,13 +36,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import Taro from "@tarojs/taro";
 var baseUrl;
+var toast = null;
 var setBaseUrl = function (_baseUrl) {
     baseUrl = _baseUrl;
 };
 var getBaseUrl = function () {
     return baseUrl;
 };
-export { setBaseUrl, getBaseUrl };
+var setToast = function (_toast) {
+    toast = _toast;
+};
+export { setBaseUrl, getBaseUrl, setToast };
 var request = function (path, method, data) { return __awaiter(void 0, void 0, void 0, function () {
     var res, cookie;
     return __generator(this, function (_a) {
@@ -57,8 +61,8 @@ var request = function (path, method, data) { return __awaiter(void 0, void 0, v
                         data: data,
                         header: {
                             "content-type": "application/json",
-                            Cookie: Taro.getStorageSync("cookieKey")
-                        }
+                            Cookie: Taro.getStorageSync("cookieKey"),
+                        },
                     })];
             case 1:
                 res = _a.sent();
@@ -70,27 +74,54 @@ var request = function (path, method, data) { return __awaiter(void 0, void 0, v
         }
     });
 }); };
-export var rGet = function (path) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, request(path, "GET", null)];
-            case 1: return [2 /*return*/, _a.sent()];
+export var rGet = function (path, data) { return __awaiter(void 0, void 0, void 0, function () {
+    var res, err;
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0: return [4 /*yield*/, request(path, "GET", data)];
+            case 1:
+                res = _b.sent();
+                if ((res === null || res === void 0 ? void 0 : res.code) === 0) {
+                    return [2 /*return*/, res === null || res === void 0 ? void 0 : res.data];
+                }
+                err = (res === null || res === void 0 ? void 0 : res.msg) || "系统异常";
+                (_a = toast === null || toast === void 0 ? void 0 : toast.error) === null || _a === void 0 ? void 0 : _a.call(toast, err);
+                throw err;
         }
     });
 }); };
 export var rPost = function (path, data) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var res, err;
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0: return [4 /*yield*/, request(path, "POST", data)];
-            case 1: return [2 /*return*/, _a.sent()];
+            case 1:
+                res = _b.sent();
+                if ((res === null || res === void 0 ? void 0 : res.code) === 0) {
+                    return [2 /*return*/, res === null || res === void 0 ? void 0 : res.data];
+                }
+                err = (res === null || res === void 0 ? void 0 : res.msg) || "系统异常";
+                (_a = toast === null || toast === void 0 ? void 0 : toast.error) === null || _a === void 0 ? void 0 : _a.call(toast, err);
+                throw err;
         }
     });
 }); };
 export var rPut = function (path, data) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var res, err;
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0: return [4 /*yield*/, request(path, "PUT", data)];
-            case 1: return [2 /*return*/, _a.sent()];
+            case 1:
+                res = _b.sent();
+                if ((res === null || res === void 0 ? void 0 : res.code) === 0) {
+                    return [2 /*return*/, res === null || res === void 0 ? void 0 : res.data];
+                }
+                err = (res === null || res === void 0 ? void 0 : res.msg) || "系统异常";
+                (_a = toast === null || toast === void 0 ? void 0 : toast.error) === null || _a === void 0 ? void 0 : _a.call(toast, err);
+                throw err;
         }
     });
 }); };
