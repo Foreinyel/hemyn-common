@@ -52,13 +52,22 @@ const request = async <T, U>(
   return res.data as Response<T>;
 };
 
-export const rGet = async <T, U>(path: string, data?: U) => {
+export const rGet = async <T, U=any>(path: string, data?: U) => {
   const res = await request<T, U>(path, "GET", data);
   if (res?.code === 0) {
     return res?.data;
   }
   const err = res?.msg || "系统异常";
   toast?.error?.(err);
+  throw err;
+};
+
+export const rGetQuietly = async <T, U = any>(path: string, data?: U) => {
+  const res = await request<T, U>(path, "GET", data);
+  if (res?.code === 0) {
+    return res?.data;
+  }
+  const err = res?.msg || "系统异常";
   throw err;
 };
 
@@ -72,6 +81,16 @@ export const rPost = async <T, U>(path: string, data?: U) => {
   throw err;
 };
 
+
+export const rPostQuietly = async <T, U>(path: string, data?: U) => {
+  const res = await request<T, U>(path, "POST", data);
+  if (res?.code === 0) {
+    return res?.data;
+  }
+  const err = res?.msg || "系统异常";
+  throw err;
+};
+
 export const rPut = async <T, U>(path: string, data?: U) => {
   const res = await request(path, "PUT", data);
   if (res?.code === 0) {
@@ -79,5 +98,14 @@ export const rPut = async <T, U>(path: string, data?: U) => {
   }
   const err = res?.msg || "系统异常";
   toast?.error?.(err);
+  throw err;
+};
+
+export const rPutQuietly = async <T, U>(path: string, data?: U) => {
+  const res = await request(path, "PUT", data);
+  if (res?.code === 0) {
+    return res?.data;
+  }
+  const err = res?.msg || "系统异常";
   throw err;
 };
