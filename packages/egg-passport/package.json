@@ -1,0 +1,59 @@
+{
+  "name": "@hemyn/egg-passport",
+  "version": "2.1.1",
+  "description": "passport plugin for egg, base on passportjs",
+  "eggPlugin": {
+    "name": "passport",
+    "dependencies": [
+      "session"
+    ]
+  },
+  "keywords": [
+    "egg",
+    "egg-plugin",
+    "eggPlugin",
+    "egg-passport",
+    "passport"
+  ],
+  "files": [
+    "app",
+    "config",
+    "lib",
+    "app.js",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "@types/passport": "^1.0.11",
+    "debug": "^3.1.0",
+    "passport": "^0.6.0"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "egg": "^2.0.0",
+    "egg-bin": "^4.3.7",
+    "egg-mock": "^3.14.0",
+    "egg-passport-github": "*",
+    "egg-passport-twitter": "*",
+    "egg-passport-weibo": "*",
+    "egg-ts-helper": "^1.14.0",
+    "eslint": "^4.13.1",
+    "eslint-config-egg": "^5.1.1",
+    "passport-localapikey": "^0.0.3",
+    "runscript": "^1.3.0",
+    "typescript": "^3.1.6"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint config test lib app *.js",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod",
+    "build": "echo \"Error: no build specified\""
+  },
+  "author": "fengmk2",
+  "license": "MIT"
+}
