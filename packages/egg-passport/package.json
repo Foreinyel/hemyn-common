@@ -27,6 +27,9 @@
     "debug": "^3.1.0",
     "passport": "^0.6.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "autod": "^3.0.1",
     "egg": "^2.0.0",
@@ -55,5 +58,6 @@
     "build": "echo \"Error: no build specified\""
   },
   "author": "fengmk2",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "964ba69fc88f56fc0e78a19b8e5321a246fb5142"
 }
